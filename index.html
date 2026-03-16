@@ -11,6 +11,44 @@
     nav a:hover { background: #f5f5f5; }
     h1, h2, h3 { margin-top: 1.4rem; }
     .dia { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee; }
+    header {
+  padding: 1rem 0 1rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1000;
+}
+    nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+nav a {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+    .dia {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  background: #fff;
+}
+    h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+h3 {
+  font-size: 1rem;
+  margin-top: 1.1rem;
+  color: #444;
+}
   </style>
 </head>
 <body>
@@ -18,6 +56,7 @@
     <h1>Férias de Sonho - Rio de Janeiro</h1>
     <p>Guia rápido por dias para usar no telemóvel.</p>
     <nav>
+      <a href="#essenciais">Essenciais</a>
       <a href="#dia-29">Dia 29</a>
       <a href="#dia-30">Dia 30</a>
       <a href="#dia-31">Dia 31</a>
@@ -36,6 +75,16 @@
   </header>
 
   <!-- Aqui vais colar os dias -->
+  <section id="essenciais" class="dia">
+  <h2>Essenciais</h2>
+  <ul>
+    <li>Alojamento: ...</li>
+    <li>Uber / 99</li>
+    <li>MetroRio</li>
+    <li>Bike Itaú / Tembici</li>
+    <li>Bondinho: bilhetes 17h00</li>
+  </ul>
+</section>
   <section id="dia-29" class="dia">
     <h2>Dia 29 – Chegada</h2>
 
