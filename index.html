@@ -429,7 +429,7 @@
           <a href="https://maps.app.goo.gl/iiJTNKwCHeg2jLHY8?g_st=iw" target="_blank" class="essencial-item">
             <span class="essencial-icon">🏠</span> Casa / Alojamento
           </a>
-          <div class="essencial-item"><span class="essencial-icon">🚗</span> Uber / 98</div>
+          <div class="essencial-item"><span class="essencial-icon">🚗</span> Uber / 90</div>
           <div class="essencial-item"><span class="essencial-icon">🚇</span> MetroRio</div>
           <div class="essencial-item"><span class="essencial-icon">🚲</span> Bike Itaú / Tembici</div>
           <div class="essencial-item"><span class="essencial-icon">🚡</span> Bondinho 17h00</div>
@@ -1017,42 +1017,36 @@
   </footer>
 
   <script>
-    // Active nav highlight on scroll
-    const sections = document.querySelectorAll('.dia');
-    const navLinks = document.querySelectorAll('nav a');
+  const navLinks = document.querySelectorAll('nav a');
+  const appEl = document.getElementById('app');
 
-    const appEl = document.getElementById('app');
-
-    // Nav link click: scroll within #app
-    navLinks.forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          const headerHeight = document.querySelector('header').offsetHeight;
-          const top = target.offsetTop - headerHeight - 8;
-          appEl.scrollTo({ top, behavior: 'smooth' });
-        }
-      });
+  // Nav click: manually scroll within #app
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      const headerHeight = document.querySelector('header').offsetHeight;
+      appEl.scrollTo({ top: target.offsetTop - headerHeight - 8, behavior: 'smooth' });
     });
+  });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-          });
-          const activeLink = document.querySelector(`nav a[href="#${id}"]`);
-          if (activeLink) {
-            activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          }
-        }
-      });
-    }, { root: appEl, rootMargin: '-10% 0px -80% 0px' });
-
-    sections.forEach(s => observer.observe(s));
-  </script>
+  // Highlight active nav link based on scroll position (no auto-scroll back)
+  appEl.addEventListener('scroll', () => {
+    const scrollTop = appEl.scrollTop;
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const sections = document.querySelectorAll('.dia');
+    let current = null;
+    sections.forEach(s => {
+      if (s.offsetTop - headerHeight - 20 <= scrollTop) current = s.id;
+    });
+    navLinks.forEach(a => {
+      const isActive = a.getAttribute('href') === '#' + current;
+      a.classList.toggle('active', isActive);
+      if (isActive) a.scrollIntoView({ block: 'nearest', inline: 'center' });
+    });
+  }, { passive: true });
+</script>
 
 </div>
 </body>
