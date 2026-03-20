@@ -2,918 +2,1037 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <title>Férias de Sonho - Rio</title>
+  <title>Férias de Sonho — Rio de Janeiro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    @media (max-width: 768px) {
-  html {
-    scroll-padding-top: 120px;
-  }
-}
-  * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html {
-    scroll-behavior: smooth;
-  }
+    :root {
+      --sun: #F5A623;
+      --ocean: #1A6B8A;
+      --sand: #F7EDD8;
+      --palm: #2D6A4F;
+      --terra: #C1440E;
+      --cream: #FDF8F0;
+      --ink: #1C1410;
+      --muted: #8A7A6A;
+      --card-bg: #FFFFFF;
+      --border: rgba(28,20,16,0.08);
+      --nav-height: 130px;
+    }
 
-  body {
-    font-family: system-ui, -apple-system, sans-serif;
-    margin: 0;
-    padding: 0 1rem 3rem;
-    line-height: 1.6;
-    max-width: 900px;
-    margin-inline: auto;
-    background: #fafafa;
-    color: #222;
-  }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
 
-  header {
-    padding: 1rem 0;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 1rem;
-    position: sticky;
-    top: 0;
-    background: rgba(250,250,250,0.98);
-    backdrop-filter: blur(6px);
-    z-index: 1000;
-  }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
 
-  nav {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-  }
+    /* ── HERO ── */
+    .hero {
+      background: var(--ocean);
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(245,166,35,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(193,68,14,0.2) 0%, transparent 50%);
+      color: white;
+      padding: 3.5rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-  nav a {
-    white-space: nowrap;
-    flex: 0 0 auto;
-    display: inline-block;
-    padding: 0.45rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid #ddd;
-    text-decoration: none;
-    color: #333;
-    font-size: 0.9rem;
-    background: #fff;
-  }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 40px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
 
-  nav a:hover {
-    background: #f5f5f5;
-  }
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 0.75rem;
+    }
 
-  h1 {
-    margin: 0 0 0.5rem;
-    font-size: 1.6rem;
-  }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
 
-  h2 {
-    margin-top: 0;
-    font-size: 1.35rem;
-  }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sun);
+    }
 
-  h3 {
-    margin-top: 1.2rem;
-    margin-bottom: 0.4rem;
-    font-size: 1rem;
-    color: #444;
-  }
+    .hero-sub {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 0.5rem;
+    }
 
-  .dia {
-    margin-top: 1rem;
-    padding: 1.1rem;
-    border: 1px solid #e8e8e8;
-    border-radius: 14px;
-    background: #fff;
-    scroll-margin-top: 110px;
-  }
+    .hero-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
 
-  ul, ol {
-    padding-left: 1.2rem;
-  }
+    .hero-dots span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sun);
+      opacity: 0.4;
+    }
+    .hero-dots span:nth-child(3) { opacity: 1; }
 
-  a {
-    color: #0b57d0;
-  }
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253,248,240,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+    }
 
-  mark {
-    background: #fff3bf;
-    padding: 0.1rem 0.25rem;
-    border-radius: 4px;
-  }
-</style>
+    .nav-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 0.25rem;
+      margin-bottom: 0.45rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    nav::-webkit-scrollbar { display: none; }
+
+    nav a {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+      background: white;
+      transition: all 0.15s ease;
+    }
+
+    nav a:hover {
+      border-color: var(--ocean);
+      color: var(--ocean);
+      background: rgba(26,107,138,0.05);
+    }
+
+    nav a.active {
+      background: var(--ocean);
+      color: white;
+      border-color: var(--ocean);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ── CARDS ── */
+    .dia {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      scroll-margin-top: var(--nav-height);
+      box-shadow: 0 1px 3px rgba(28,20,16,0.04), 0 4px 16px rgba(28,20,16,0.04);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .dia:hover {
+      box-shadow: 0 2px 6px rgba(28,20,16,0.06), 0 8px 24px rgba(28,20,16,0.07);
+    }
+
+    .card-header {
+      padding: 1.4rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .day-badge {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .dia-titulo {
+      flex: 1;
+    }
+
+    .dia-titulo h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .card-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    /* ── SECTIONS ── */
+    .bloco {
+      margin-bottom: 1.4rem;
+    }
+    .bloco:last-child { margin-bottom: 0; }
+
+    .bloco-titulo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ocean);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 1rem 0 0.35rem;
+    }
+    h3:first-child { margin-top: 0; }
+
+    p {
+      font-size: 0.9rem;
+      color: #3D3028;
+      margin-bottom: 0.5rem;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: #3D3028;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    strong { color: var(--ink); font-weight: 600; }
+
+    a { color: var(--ocean); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    mark {
+      background: rgba(245,166,35,0.2);
+      color: var(--terra);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+
+    /* ── TAGS / PILLS ── */
+    .tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2em 0.6em;
+      border-radius: 999px;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .tag-sun { background: rgba(245,166,35,0.15); color: #A0690A; }
+    .tag-ocean { background: rgba(26,107,138,0.12); color: var(--ocean); }
+    .tag-palm { background: rgba(45,106,79,0.12); color: var(--palm); }
+    .tag-terra { background: rgba(193,68,14,0.12); color: var(--terra); }
+
+    /* ── ESSENCIAIS CARD ── */
+    #essenciais .card-header {
+      background: linear-gradient(135deg, var(--ocean) 0%, #0D4A63 100%);
+    }
+    #essenciais .card-header h2 { color: white; }
+    #essenciais .day-badge {
+      background: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .essencial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .essencial-item {
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      background: var(--sand);
+      border: 1px solid rgba(28,20,16,0.06);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .essencial-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── DIVIDER ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.1rem 0;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .destaque {
+      background: var(--sand);
+      border-left: 3px solid var(--sun);
+      border-radius: 0 10px 10px 0;
+      padding: 0.8rem 1rem;
+      margin: 0.75rem 0;
+      font-size: 0.88rem;
+    }
+
+    .destaque strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--terra);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .card-header { padding: 1.1rem 1.1rem 0.8rem; gap: 0.75rem; }
+      .card-body { padding: 1rem 1.1rem 1.25rem; }
+      .day-badge { width: 38px; height: 38px; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-label">Guia de Viagem · Família</p>
+    <h1>Rio de<br><em>Janeiro</em></h1>
+    <p class="hero-sub">Leblon · Ipanema · Lapa · Ilha Grande</p>
+    <div class="hero-dots">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- NAV -->
   <header>
-    <h3>Férias de Sonho - Rio de Janeiro</h3>
-    <p>Guia rápido por dias para usar no telemóvel.</p>
-    <nav>
-      <a href="#essenciais">Essenciais</a>
-      <a href="#dia-29">Dia 29</a>
-      <a href="#dia-30">Dia 30</a>
-      <a href="#dia-31">Dia 31</a>
-      <a href="#dia-1">Dia 1</a>
-      <a href="#dia-2">Dia 2</a>
-      <a href="#dia-3">Dia 3</a>
-      <a href="#dia-4">Dia 4</a>
-      <a href="#dia-5">Dia 5</a>
-      <a href="#dia-6">Dia 6</a>
-      <a href="#dia-7">Dia 7</a>
-      <a href="#dia-8">Dia 8</a>
-      <a href="#dia-9">Dia 9</a>
-      <a href="#dia-10">Dia 10</a>
-      <a href="#dia-11">Dia 11</a>
+    <p class="nav-label">Navegar por dia</p>
+    <nav id="main-nav">
+      <a href="#essenciais">⭐ Essenciais</a>
+      <a href="#dia-29">29 Jun</a>
+      <a href="#dia-30">30 Jun</a>
+      <a href="#dia-31">31 Jun</a>
+      <a href="#dia-1">1 Jul</a>
+      <a href="#dia-2">2 Jul</a>
+      <a href="#dia-3">3 Jul</a>
+      <a href="#dia-4">4 Jul</a>
+      <a href="#dia-5">5 Jul</a>
+      <a href="#dia-6">6 Jul</a>
+      <a href="#dia-7">7 Jul</a>
+      <a href="#dia-8">8 Jul</a>
+      <a href="#dia-9">9 Jul</a>
+      <a href="#dia-10">10 Jul</a>
+      <a href="#dia-11">11 Jul</a>
     </nav>
   </header>
 
-  <!-- Aqui vais colar os dias -->
-  <section id="essenciais" class="dia">
-  <h2>Essenciais</h2>
-  <ul>
-    <li>Alojamento: <a href="https://maps.app.goo.gl/iiJTNKwCHeg2jLHY8?g_st=iw" target="_blank">Casa</a></li>
-    <li>Uber / 99</li>
-    <li>MetroRio</li>
-    <li>Bike Itaú / Tembici</li>
-    <li>Bondinho: bilhetes 17h00</li>
-  </ul>
-</section>
-  <section id="dia-29" class="dia">
-    <h2>Dia 29 – Chegada</h2>
-
-    <h3>Chegada ao Rio</h3>
-    <ul>
-      <li>Transfer: Aeroporto Galeão às 6h30.</li>
-      <li>Pequeno-almoço no Copacabana Palace.</li>
-      <li>Pequeno-almoço alternativo: Talho Capixaba — Leblon (abre às 7h00).</li>
-    </ul>
-
-    <h3>Zona Sul – Leblon (Posto 12)</h3>
-    <p><strong>Mercado Zona Sul – Leblon (Posto 12)</strong><br>
-    Av. Delfim Moreira, esquina com a Rua Rainha Guilhermina — mercado da praia, a 1–2 minutos a pé do Posto 12.</p>
-    <ul>
-      <li>Pertíssimo da orla.</li>
-      <li>Bebidas geladas, snacks, frutas, sandes, protetor solar.</li>
-      <li>Abre cedo e fecha tarde.</li>
-      <li>É onde muitos moradores do Leblon compram coisas rápidas antes da praia.</li>
-    </ul>
-
-    <h3>Outras ótimas opções próximas</h3>
-    <ul>
-      <li><strong>Zona Sul — Rua Dias Ferreira</strong> (cerca de 8 minutos a pé, mais completo, grande variedade).</li>
-      <li><strong>Hortifruti Natural da Terra — Ataulfo de Paiva</strong> (cerca de 10 minutos a pé, ótimo para frutas, sumos e snacks saudáveis antes da praia).</li>
-    </ul>
-
-    <h3>Skybar / Piscinas para marcar</h3>
-    <ul>
-      <li>Sky Leme.</li>
-      <li>Hilton Copacabana.</li>
-      <li>Othon Palace.</li>
-    </ul>
-  </section>
-  <section id="dia-30" class="dia">
-    <h2>Dia 30 – Leblon Posto 12 + Pôr-do-sol no Arpoador + Ipanema</h2>
-
-    <h3>Manhã: Praia do Leblon</h3>
-    <p>Ótima praia para famílias e super agradável para passar a manhã.</p>
-
-    <h3>Almoço (opções próximas do Posto 12)</h3>
-    <ol>
-      <li><strong>BB Lanches</strong> (8–10 min a pé)<br>Açaí excelente, pastéis, sanduíches. Ambiente super descontraído, spot tradicional carioca.</li>
-      <li><strong>Big Polis</strong> (10–12 min a pé)<br>Sucos + pratos baratos + vibe de praia. Açaí delicioso, pratos rápidos e económicos.</li>
-      <li><strong>Cantinho do Leblon</strong> (~12 min a pé)<br>Comida caseira barata e boa. Ambiente de “boteco light” seguro, porções generosas.</li>
-      <li><strong>Tapí Tapioca</strong> (~10–12 min a pé)<br>Tapiocas deliciosas, baratas e variadas. Excelente pós-praia com adolescentes.</li>
-      <li><strong>Safari Burger & Grill</strong> (~12 min a pé)<br>Hambúrgueres acessíveis, ambiente jovem, prático e rápido.</li>
-      <li><strong>Beach Sucos</strong> (6–8 min a pé)<br>Sucos + sanduíches económicos, bem perto da praia. Sanduíches, salgados, açaí.</li>
-      <li><strong>2v Conveniência</strong><br>Sanduíches, salgados, snacks, bebidas, gelados. Preços acessíveis para praia.</li>
-    </ol>
-
-    <h3>Tarde: Caminhar ou bicicleta pelo calçadão até Ipanema</h3>
-    <p>Uma das praias mais icónicas do Rio (2,3 km — 30 min).</p>
-    <ul>
-      <li>Melhor açaí da praia: Açaí do Moreno (Posto 9 e 10).</li>
-      <li>Estátua de Tom Jobim (na orla, perto do Arpoador) — foto obrigatória!</li>
-    </ul>
-
-    <h3>Fim de tarde: Pôr-do-sol no Arpoador</h3>
-    <p>Programa clássico e imperdível.</p>
-
-    <h3>Loja gigante Havaianas</h3>
-    <p>Ipanema — Segunda a sábado: 10h00–20h00.</p>
-
-    <h3>Jantar em Ipanema</h3>
-    <ul>
-      <li><strong>Bar Garota de Ipanema</strong><br>Mostra-lhes a placa, o interior do bar e explica que foi aqui que nasceu um dos maiores símbolos do Brasil.</li>
-      <li><strong>Choperia Torre do Barão</strong> (10–12 min a pé)<br>Clássico carioca barato. Espetinhos, petiscos, pratos baratos. Bom para famílias e adolescentes.</li>
-    </ul>
-  </section>
-  <section id="dia-31" class="dia">
-    <h2>Dia 31 – Ciclovia Leblon → Praia do Leblon → Dorival Caymmi → Praia do Leme → Praia Vermelha (~25 km)</h2>
-
-    <h3>Descrição do percurso</h3>
-    <p>Há ciclovia praticamente por todo o caminho, passando por Ipanema, Copacabana e Leme.</p>
-    <p>O final do percurso, já na Urca/Praia Vermelha, também é acessível de bicicleta.</p>
-    <p>Há bicicletário na Praia Vermelha ou existem bicicletas municipais (<strong>Tembici/Bike Rio</strong>) para pegar num local e devolver noutro — Urca <strong>Bike itau</strong> — tembici — criar contas 4 tlm com 4 cartões.</p>
-
-    <h3>Almoço</h3>
-    <p>Quiosques Praia Vermelha.</p>
-    <p>17h00.</p>
-
-    <h3>Teleférico Pão de Açúcar (tarde/pôr do sol)</h3>
-    <p><a href="https://bondinho.com.br">https://bondinho.com.br</a> — bilhetes comprados para as 17h00.</p>
-    <p>Chegue 20 minutos antes do horário de embarque.</p>
-
-    <h3>Clássico Beach Club Urca</h3>
-
-    <h3>Spirit Copa bar — Fermont Rio (8h00–22h00) — MPB</h3>
-
-    <h3>Jantar (Uber 5 min) — Botafogo</h3>
-    <ul>
-      <li><strong>Galeto STS (Botafogo)</strong><br>Tradicional, barato, delicioso e descontraído. Pratos: galeto, arroz, farofa, linguicinhas, batatas. Preço: R$ 40–55 por pessoa. Vibe: mesa simples, comida farta, muito carioca.</li>
-      <li><strong>Chopperia Botafogo</strong></li>
-      <li><strong>Carne e chop</strong></li>
-      <li><strong>Assador Bar (Botafogo)</strong><br>Simples, económico, porções e grelhados. Preço: R$ 35–60 por pessoa. Vibe: ambiente jovem, mesas ao ar livre dependendo da unidade.</li>
-    </ul>
-
-    <h3>GALETO DO LEBLON</h3>
-    <p>📍 Rua Dias Ferreira, 154 — Leblon.</p>
-    <p><strong>Por que esta é a MELHOR escolha:</strong></p>
-    <ul>
-      <li>Preço muito melhor do que churrascarias tradicionais.</li>
-      <li>Porções grandes e ótimas para dividir.</li>
-      <li>Ambiente simples, descontraído e muito carioca.</li>
-      <li>Galeto na brasa super saboroso (eles fazem muito bem).</li>
-      <li>Acompanhamentos que adolescentes adoram: batata, farofa, arroz, saladas.</li>
-    </ul>
-    <p><strong>O que pedir:</strong></p>
-    <ul>
-      <li>Galeto com batatas.</li>
-      <li>Picanha em porção.</li>
-      <li>Arroz biro-biro.</li>
-      <li>Farofa crocante.</li>
-      <li>Suco ou refrigerante.</li>
-    </ul>
-
-    <h3>Transporte Botafogo → Leblon</h3>
-    <p><strong>1) Metrô</strong> — a opção mais barata e previsível.</p>
-    <ul>
-      <li>De Botafogo: Linha 1/4 — sentido Ipanema/Leblon.</li>
-      <li>Descer em Antero de Quental (central do Leblon) ou Jardim de Alah (próximo da Lagoa).</li>
-      <li>Tempo total: 10–15 minutos.</li>
-      <li>Preço: ~R$ 6,90 por pessoa.</li>
-    </ul>
-    <p><strong>2) Uber</strong> — mais confortável, especialmente à noite.</p>
-    <ul>
-      <li>Tempo: 10–20 minutos.</li>
-      <li>Preço médio: R$ 18–28 (até 3–4 pessoas).</li>
-    </ul>
-  </section>
-  <section id="dia-1" class="dia">
-    <h2>Dia 1 – ORLA SEMPRE: Leblon → Ipanema → Arpoador → Copacabana → Leme (ciclovia contínua)</h2>
-
-    <h3>Paragem Forte de Copacabana</h3>
-    <p>(12 min ou 4 km).</p>
-
-    <h3>10h00 – Confeitaria Colombo ou lanche da tarde (16h–18h) → segunda melhor opção</h3>
-
-    <h3>Jardim Botânico</h3>
-    <p>Grátis às 4ª feiras.</p>
-    <ul>
-      <li>Ingresso entre R$ 6 e R$ 10 (varia por categoria).</li>
-      <li>Terças-feiras → entrada gratuita.</li>
-      <li>Outros valores de consumação: Café completo individual: R$ 40–60; Café para duas pessoas: R$ 80–140.</li>
-    </ul>
-
-    <h3>Praia do Leme</h3>
-    <p>Mureta do Leme — almoçar (2ª–6ª menu executivo 55 reais, 11h–15h).</p>
-
-    <h3>Vinda</h3>
-    <p>Sorvete Kurtos Rio (10 reais) — próximo Copacabana Palace.</p>
-    <p>Melhor gelado: Rua Rodolfo Dantas.</p>
-
-    <h3>JOBI</h3>
-    <p>O Jobi é um dos botecos mais tradicionais e icónicos do Rio, famoso pelo clima carioca, chope gelado e petiscos excelentes.</p>
-    <ul>
-      <li>Não é barato (não entra nas listas de “refeições baratas”).</li>
-      <li>Vibe adulta, apesar de adolescentes poderem ir.</li>
-      <li>Muitas vezes cheio, barulhento, clima de bar clássico carioca.</li>
-      <li>Fica perto do Posto 12 — ótima localização.</li>
-    </ul>
-    <p><strong>Conclusão:</strong> Vale super a pena para um fim de tarde, petiscos, ambiente carioca.</p>
-
-    <h3>Final tarde</h3>
-    <ul>
-      <li><strong>Samba Sky — Rooftop Grátis</strong></li>
-      <li><strong>Vizta no Gran Mercure - Copacabana</strong></li>
-    </ul>
-  </section>
-  <section id="dia-2" class="dia">
-    <h2>Dia 2 – Santa Teresa: charmoso, artístico e cheio de mirantes</h2>
-
-    <h3>1) Partida: Estação Carioca → Bonde de Santa Teresa</h3>
-    <p>Pagamento: direto na bilheteria ou no próprio embarque.</p>
-    <p>Onde embarcar: Rua Lélio Gama, junto ao Metrô Carioca.</p>
-    <ul>
-      <li>Seg–Sex: 6h às 23h.</li>
-      <li>Sábados: 8h às 23h.</li>
-      <li>Dom/feriados: 8h às 20h.</li>
-      <li>Preço: R$ 20 (válido para todo o trajeto).</li>
-    </ul>
-    <p>Visita obrigatória: Escadaria Selarón, um dos locais mais fotografados do Rio e uma experiência super divertida para adolescentes.</p>
-
-    <h3>2) Volta de bonde para a Lapa ou centro</h3>
-    <p>O bonde passa a cada 15–20 minutos. Desça nos Arcos da Lapa para fechar com chave de ouro — a travessia é fotográfica e única.</p>
-
-    <h3>3) Parada — Largo das Neves</h3>
-    <p>Parada final do ramal Paula Mattos. Zona mais residencial e calma, com cafés e igrejas antigas.</p>
-    <ul>
-      <li>Fotografar a igrejinha charmosa.</li>
-      <li>Tomar um café tranquilo.</li>
-      <li>Caminhar pelas ruas pacíficas.</li>
-    </ul>
-
-    <h3>4) Museu da Chácara do Céu + Parque das Ruínas</h3>
-    <p>Pode ir caminhando do Largo dos Guimarães (10–12 min). Fontes citam os museus e mirantes associados ao roteiro cultural do Curvelo.</p>
-    <ul>
-      <li><strong>Museu da Chácara do Céu</strong><br>Arte brasileira e europeia. Vista linda para a cidade.</li>
-      <li><strong>Parque das Ruínas</strong><br>Estrutura urbana com mirante 360º. Perfeito para fotos. Entrada grátis.</li>
-    </ul>
-
-    <h3>5) Largo dos Guimarães (o coração de Santa Teresa)</h3>
-    <p>É aqui que o bairro ganha vida: arte, boemia, restaurantes, música.</p>
-    <ul>
-      <li><strong>O que fazer:</strong><br>Passear pelas ruas com ateliês e grafites. Tirar fotos nas esquinas coloridas do bairro. Explorar galerias artesanais.</li>
-      <li><strong>Onde comer:</strong><br>Bar do Mineiro — feijoada famosa, ambiente local — a melhor feijoada do Rio. Cafecito — cafés deliciosos. Café do Alto — comida nordestina.</li>
-    </ul>
-
-    <h3>6) Largo do Curvelo</h3>
-    <p>Primeira parada oficial do ramal Paula Mattos.</p>
-    <ul>
-      <li>Mirante do Curvelo (vista para o Pão de Açúcar e Baía de Guanabara).</li>
-      <li>Mirante Jorge Salomão.</li>
-      <li>Parque Glória Maria (pequeno, lindo, recém-revitalizado).</li>
-      <li>Ruas fotogénicas com casas históricas.</li>
-      <li>É uma excelente zona para começar a caminhar sem pressa.</li>
-    </ul>
-
-    <h3>Melhor horário para este roteiro</h3>
-    <ul>
-      <li><strong>Manhã tardia (10h–13h)</strong> → luz linda, clima fresco.</li>
-      <li><strong>Tarde (15h–18h)</strong> → fotos douradas no Largo das Ruivas e Arcos da Lapa.</li>
-      <li><strong>Evitar: Noite</strong> (ruas são tranquilas demais e o bonde fecha às 20h/23h dependendo do dia).</li>
-    </ul>
-
-    <h3>Posso sair a meio do caminho e voltar a entrar?</h3>
-    <p><strong>Tecnicamente, NÃO.</strong></p>
-    <p>O ingresso do bonde funciona como uma passagem de transporte público, paga por embarque não é um passe turístico com paradas ilimitadas.</p>
-    <p>Se sair numa parada e quiser voltar a entrar no bonde, paga de novo. Isso está de acordo com o funcionamento regular: tarifa única por viagem, paga na hora. <a href="http://partiurota.com">partiurota.com</a></p>
-    <p>Ou seja: entrar → descer → voltar a entrar = 2 viagens, logo 2 pagamentos.</p>
-
-    <h3>Melhor estratégia para o passeio</h3>
-    <p>A MELHOR estratégia é exatamente a que sugeriste:</p>
-    <ul>
-      <li>Ir até ao final (Largo das Neves) sem descer.</li>
-      <li>Depois fazer o percurso de volta parando nos lugares que quer visitar.</li>
-      <li><strong>Porquê isto é o ideal?</strong><br>Evita pagar mais do que uma passagem. Já vê todo o trajeto de uma só vez (incluindo os Arcos da Lapa). Decide onde quer parar na volta. O retorno costuma ser mais vazio. Mais descansado para explorar cada zona.</li>
-    </ul>
-
-    <h3>Exemplo de plano perfeito</h3>
-    <p><strong>Ida direta:</strong> Carioca → Curvelo → Guimarães → Neves (sem descer).</p>
-    <p><strong>Volta com paragens:</strong></p>
-    <ul>
-      <li>Largo das Neves → fotos, calmaria.</li>
-      <li><strong>Largo dos Guimarães</strong> → restaurantes, cafés, arte.</li>
-      <li>Curvelo → mirantes.</li>
-    </ul>
-    <p>Depois segue até Carioca (centro) para terminar. Assim faz um único pagamento e aproveita o melhor do bairro.</p>
-
-    <h3>O bondinho parte da Estação Carioca, na Rua Lélio Gama. <a href="http://whatahotel.com">whatahotel.com</a></h3>
-
-    <h3>Como chegar desde Leblon (melhor forma: Metrô)</h3>
-    <p><strong>1) METRÔ (a melhor opção)</strong> — Super simples e direto.</p>
-    <ul>
-      <li>Entrar no Metrô Antero de Quental (Leblon) — Linha 4.</li>
-      <li>Direção Centro.</li>
-      <li>Baldeação rápida na estação General Osório.</li>
-      <li>Sair na Estação Carioca.</li>
-      <li>Caminhar 2–3 minutos até ao ponto de embarque do bonde (Rua Lélio Gama).</li>
-      <li><strong>Tempo total:</strong> 18–22 minutos desde o Leblon.</li>
-      <li><strong>Preço:</strong> ~R$ 6,90 por pessoa.</li>
-      <li>É a forma mais recomendada para turistas e extremamente segura durante o dia.</li>
-    </ul>
-
-    <p><strong>2) UBER (porta a porta)</strong> — Também muito cómodo.</p>
-    <ul>
-      <li>Tempo: 15–25 minutos (dependendo do trânsito).</li>
-      <li>Preço médio: R$ 25–40.</li>
-    </ul>
-
-    <h3>Passeio pelo Centro</h3>
-    <p><strong>Theatro Municipal</strong> → <strong>Confeitaria Colombo</strong> → <strong>Real Gabinete Português de Leitura</strong> — grátis.</p>
-    <ol>
-      <li><strong>Arcos da Lapa → Theatro Municipal</strong><br>800 metros — 10 minutos a pé. Passeio pela Cinelândia, lindo e cheio de prédios históricos.</li>
-      <li><strong>Theatro Municipal → Confeitaria Colombo (Centro)</strong><br>700 metros — 9 minutos a pé. Descida pela Av. Rio Branco, zona movimentada e segura.</li>
-      <li><strong>Confeitaria Colombo → Real Gabinete Português de Leitura</strong><br>350 metros — 4 minutos a pé. Fica literalmente “ao lado”, numa rua tranquila.</li>
-    </ol>
-    <p><strong>Total caminhando pelos três:</strong> Aproximadamente 25–30 minutos no total.</p>
-
-    <ul>
-      <li><strong>Casa Cave</strong> — primeira confeitaria do Rio.</li>
-      <li><strong>Sahara</strong> — Mercado.</li>
-    </ul>
-  </section>
-  <section id="dia-3" class="dia">
-    <h2>DIA 3 – Ciclovia Tim Maia 9 km Leblon/Barra Tijuca (passando por São Conrado com vista para o Atlântico) — fazer praia em São Conrado — Praia do Pepino (ver parapentes a aterrar)</h2>
-
-    <h3>Manhã cedo (7h00–9h30)</h3>
-    <p>Luz linda, muito mais fresco, trânsito de bicicletas tranquilo.</p>
-    <p>Há estações Tembici (laranja) em:</p>
-    <ul>
-      <li>Leblon — várias estações próximas da Av. General San Martin e Av. Delfim Moreira.</li>
-      <li>São Conrado — estação perto da Praia do Pepino, ideal para devolver após o passeio.</li>
-    </ul>
-
-    <h3>Leblon → Início da Ciclovia (0 km — Partida)</h3>
-    <ul>
-      <li>Pegue a Tembici no Leblon e entre na ciclovia pela Avenida Niemeyer.</li>
-      <li>Aqui começam as vistas de mar abertas e o costão rochoso.</li>
-      <li>Tempo previsto até o próximo ponto: 10–12 min pedalando leve.</li>
-    </ul>
-
-    <h3>Mirantes do Leblon (1 km) — Primeira Paragem</h3>
-    <ul>
-      <li>O trecho inicial da ciclovia tem dois mirantes oficiais de observação, perfeitos para fotos do mar, do Vidigal e da orla.</li>
-      <li>Beber água (normalmente há vendedores).</li>
-    </ul>
-
-    <h3>Vidigal — Costão da Niemeyer (2–2,5 km)</h3>
-    <p>Trecho lindíssimo passando rente ao oceano, um dos mais cinematográficos da cidade.</p>
-
-    <h3>Praia de São Conrado — Praia do Pepino (3,8 km)</h3>
-    <ul>
-      <li>Aqui começa um dos lugares mais bonitos do Rio:</li>
-      <li>Ponto de pouso dos parapentes da Pedra Bonita (super animado).</li>
-      <li>Mar calmo e cenário paradisíaco.</li>
-      <li>Restaurantes e quiosques excelentes para almoço.</li>
-      <li>Chegada prevista: 20–25 min desde o Leblon, ritmo leve.</li>
-    </ul>
-
-    <h3>Onde almoçar na Praia do Pepino (São Conrado)</h3>
-    <p><strong>Quiosques da Praia do Pepino</strong></p>
-    <ul>
-      <li>Comida fresca, vista incrível, peixe grelhado, açaí, sanduíches.</li>
-      <li>Perfeito para um almoço descontraído pós-pedal.</li>
-    </ul>
-
-    <h3>Joatinga + Praia da Reserva + Barra da Tijuca</h3>
-    <p>Este dia é pensado exatamente para incluir a Joatinga, já que ela fica entre São Conrado e Barra, sendo perfeita para combinar com estas praias.</p>
-
-    <h3>Programa do dia</h3>
-    <ul>
-      <li><strong>Praia da Joatinga</strong><br>Para muitos, uma das praias mais bonitas e secretas do Rio. Pequena, com água azul-turquesa, acesso por escadaria entre as rochas, vibe jovem.</li>
-      <li><strong>Tarde — Praia da Reserva</strong><br>Longa, tranquila, natureza preservada. Ideal para relaxar e compensar o esforço do acesso à Joatinga.</li>
-    </ul>
-
-    <h3>Retorno ao Leblon</h3>
-
-    <h3>Parque 2 Irmãos</h3>
-    <p><strong>Como chegar?</strong></p>
-    <ol>
-      <li><strong>De Uber/Táxi (o mais fácil)</strong><br>Digite: “Parque Penhasco Dois Irmãos — Leblon”. O carro deixa praticamente na entrada da trilha que leva aos mirantes (5–8 minutos a pé até o topo). Ideal para si. <strong>Bar da Laje</strong> — junto ao morro Dois Irmãos — obrigatório.</li>
-      <li><strong>A pé desde o Leblon</strong><br>Possível, mas cansativo: subida longa e íngreme. Caminhada: 25–40 min dependendo do ritmo. Não recomendo para quem já vai fazer outros passeios no dia.</li>
-    </ol>
-
-    <p><strong>O que esperar lá em cima?</strong></p>
-    <ul>
-      <li>4 miradouros oficiais.</li>
-      <li>Caminhos bem cuidados.</li>
-      <li>Bancos, sombras, vegetação.</li>
-      <li>Vista panorâmica das paisagens mais bonitas da Zona Sul.</li>
-      <li>Muitas famílias, corredores e fotógrafos.</li>
-      <li>É um dos parques mais agradáveis do Rio.</li>
-      <li>30–45 minutos é suficiente para ver tudo com calma.</li>
-    </ul>
-
-    <p><strong>O que levar</strong></p>
-    <ul>
-      <li>Água (não há venda lá em cima).</li>
-      <li>Ténis (chinelos OK se não chover).</li>
-    </ul>
-  </section>
- <section id="dia-4" class="dia">
-  <h2>Dia 4 – ROTEIRO LAPA (com Feira do Lavradio)</h2>
-
-  <h3>09h30 – Chegada à Lapa</h3>
-  <p><strong>Estação CARIOCA (Linha 1/2)</strong></p>
-  <ul>
-    <li>É a estação mais prática e segura para fazer este trajeto, porque:</li>
-    <li>Fica a 10–12 minutos a pé da Rua do Lavradio (Lapa)</li>
-    <li>Caminho simples e movimentado durante o dia</li>
-    <li>A zona é plana e fácil para ir com adolescentes</li>
-    <li>(A Estação Cinelândia também funciona, mas Carioca deixa mais perto e com trajeto mais direto.)</li>
-  </ul>
-
-  <h3>🛍️ 10h00 – Feira do Lavradio (Feira Rio Antigo)</h3>
-  <p>📍 Rua do Lavradio, Lapa</p>
-  <p><strong>A Feira do Lavradio acontece todo primeiro sábado do mês, além da rua cheia de artistas, antiquários e artesanato.</strong></p>
-  <p>Este é o evento oficial do primeiro sábado do mês: a rua cheia de barracas de artesanato, móveis, quadros, couro, moda, decor, gastronomia e MUITA música ao vivo.</p>
-  <p>A Praça General Osório recebeu recentemente uma feira dominical com samba e gastronomia, reforçando o modelo típico de feira + música nos eventos cariocas de rua. [file:1]</p>
-
-  <p><strong>O que encontra:</strong></p>
-  <ul>
-    <li>artesanato carioca</li>
-    <li>antiguidades</li>
-    <li>quadros e artes</li>
-    <li>música ao vivo em vários pontos</li>
-    <li>bares com mesas na rua</li>
-    <li>ambiente 100% boémio e descontraído</li>
-  </ul>
-
-  <p><strong>Dicas:</strong></p>
-  <ul>
-    <li>Provar pastel, caldo de cana ou comprar pequenas lembranças do Rio.</li>
-    <li>Comece pela Lavradio → visconde do Rio Branco</li>
-    <li>Prove pastéis, caldo de cana</li>
-    <li>Vá entrando nas casas de antiguidades, algumas são verdadeiras relíquias</li>
-  </ul>
-
-  <p><strong>Armazém do Senado</strong> – roda de samba, Sábado das 14h00 às 18h30 – Baile Charme na rua do Resende, primeiro sábado do mês</p>
-
-  <hr>
-
-  <h3>☕ 11h30 – Paragem para café ou brunch</h3>
-  <p>Algumas sugestões maravilhosas na área:</p>
-  <ul>
-    <li>☕ <strong>Café Lapa</strong> – perto da Lavradio
-      <ul>
-        <li>Moderno, rápido, ótimo para adolescentes.</li>
-      </ul>
-    </li>
-    <li>🍳 <strong>Café da manhã no Bar Brasil</strong>
-      <ul>
-        <li>Clássico carioca com ambiente antigo, charmoso.</li>
-      </ul>
-    </li>
-    <li>🥐 <strong>Cinelândia / Teatro Municipal</strong>
-      <ul>
-        <li>Pode também caminhar 10 minutos e tomar café na Cinelândia com vista para o Municipal.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <hr>
-
-  <h3>🎨 12h15 – Escadaria Selarón (a 10 minutos a pé)</h3>
-  <p>Caminhe desde a Lavradio: 10 a 12 min.</p>
-  <ul>
-    <li>Azulejos coloridos</li>
-    <li>Fotos incríveis</li>
-    <li>Energia vibrante</li>
-    <li>Sempre animada aos sábados</li>
-  </ul>
-
-  <p>Um dos lugares mais fotogénicos da cidade.</p>
-  <ul>
-    <li>Azulejos coloridos do artista chileno Jorge Selarón</li>
-    <li>Entrada livre</li>
-  </ul>
-
-  <p>A parte mais animada da feira começa a ganhar força até 14h:</p>
-  <ul>
-    <li>Músicos de rua</li>
-    <li>DJs nos bares</li>
-    <li>Edição de samba e gastronomia semelhante à registrada na Praça General Osório em Ipanema durante feiras temáticas.</li>
-  </ul>
-  <p>(Mostra que esse tipo de programação é típico e também ocorre nas feiras grandes da cidade, como a do Lavradio.) [file:1]</p>
-
-  <hr>
-
-  <h3>🎶 13h30 – Almoço com samba (Lapa)</h3>
-
-  <p>🍽️ Opção 1 — <strong>Bar do Adão</strong> (Lapa)</p>
-  <ul>
-    <li>Pastéis famosos + ambiente animado.</li>
-  </ul>
-
-  <p>🍽️ Opção 2 — <strong>Casa Momus</strong></p>
-  <ul>
-    <li>Para algo mais arrumado, com comida ótima.</li>
-  </ul>
-
-  <p>🍽️ Opção 3 — <strong>Mangue Seco</strong></p>
-  <ul>
-    <li>Local tradicional com forró e samba de raiz.</li>
-    <li>Comida ótima, ambiente animado, muitas vezes com samba ou forró.</li>
-  </ul>
-
-  <p>🍽️ Opções 4,5,6</p>
-  <p><strong>Saloon 79 / Bar das Quengas / Lapa Irish Pub</strong></p>
-  <p>→ Dependendo do estilo que preferem.</p>
-
-  <p>🍽️ Opção 7 - <strong>Nova Choperia (Lavradio)</strong></p>
-  <p>Tradicionalíssima e ótima com adolescentes.</p>
-
-  <hr>
-
-  <h3>🎭 15h00 – Passeio cultural leve (opcional)</h3>
-  <p>Se quiser alongar o passeio:</p>
-
-  <p><strong>✔ Theatro Municipal</strong> (por fora)</p>
-  <ul>
-    <li>A pé 10 minutos; fotos maravilhosas.</li>
-  </ul>
-
-  <p><strong>✔ Catedral Metropolitana</strong></p>
-  <ul>
-    <li>Impressionante por dentro, arquitetura fortíssima; entrada grátis.</li>
-  </ul>
-
-  <p><strong>✔ Aterro do Flamengo</strong></p>
-  <ul>
-    <li>Uber 5 minutos; ótimo para terminar com vista para o Pão de Açúcar.</li>
-  </ul>
-
-  <p><strong>🏛️ 16h30 — Catedral Metropolitana (opcional)</strong></p>
-  <ul>
-    <li>5 minutos a pé da Selarón.</li>
-    <li>Estrutura impressionante e interior maravilhoso; vale muito a visita.</li>
-  </ul>
-
-  <hr>
-
-  <h3>🌇 17h00 – Samba / Pagode de fim de tarde na Lapa</h3>
-  <p>Aos domingos, quase sempre há:</p>
-  <ul>
-    <li>🎶 Roda de Samba da Pedra do Sal (não é Lapa, mas fica a 10 min de Uber)</li>
-    <li>Ambiente mais roots, muito carioca.</li>
-  </ul>
-
-  <p>🎶 Samba da Lapa</p>
-
-  <p><strong>Opção 1 — Samba da Lapa</strong></p>
-  <ul>
-    <li>Bares da Lavradio e da Rua Riachuelo começam rodas espontâneas.</li>
-  </ul>
-
-  <p><strong>Opção 2 — Pedra do Sal</strong></p>
-  <ul>
-    <li>A 10 minutos de Uber — uma das rodas de samba mais tradicionais do Rio.</li>
-  </ul>
-  <p>(Fica fora da Lapa, mas existe a transição Lapa → Saúde para samba desde sempre.) [file:1]</p>
-
-  <hr>
-
-  <h3>🧭 Mobilidade</h3>
-  <ul>
-    <li>Para ir do <strong>Leblon → Lapa</strong>: Uber (R$ 22–35) ou Metrô (30 min até Cinelândia).</li>
-    <li>Para <strong>circular dentro da Lapa</strong>: tudo é feito a pé.</li>
-    <li>Para <strong>regressar</strong>: Uber até o Leblon (R$ 25–40).</li>
-  </ul>
-
-  <hr>
-
-  <h3>🍽️ 19h30 — Jantar na Lapa</h3>
-  <p>Escolha conforme o mood:</p>
-
-  <p><strong>Casa Momus</strong></p>
-  <ul>
-    <li>Italiano moderno, comida deliciosa.</li>
-  </ul>
-
-  <p><strong>Bar do Adão</strong></p>
-  <ul>
-    <li>Melhores pastéis do Rio.</li>
-  </ul>
-
-  <p><strong>Boteco da Lapa</strong></p>
-  <ul>
-    <li>Clássico e animado.</li>
-  </ul>
-
-  <h3>🧭 DESLOCAMENTOS</h3>
-  <ul>
-    <li>Para ir do Leblon → Lapa:</li>
-    <li>Uber: R$ 22–35</li>
-    <li>Metrô: Linha 4 até General Osório → Linha 1 até Carioca</li>
-    <li>Dentro da Lapa:</li>
-    <li>Tudo a pé de forma muito fácil.</li>
-  </ul>
-
-  <h3>⭐ RESUMO DO ROTEIRO</h3>
-  <ul>
-    <li>09h30 Arcos da Lapa</li>
-    <li>10h00 Feira do Lavradio</li>
-    <li>11h30 Café / brunch</li>
-    <li>12h30 Música de rua / compras / gastronomia</li>
-    <li>14h00 Almoço com samba</li>
-    <li>15h30 Escadaria Selarón</li>
-    <li>16h30 Catedral Metropolitana</li>
-    <li>17h30 Samba no fim da tarde</li>
-    <li>19h30 Jantar na Lapa</li>
-  </ul>
-</section>
-<section id="dia-5" class="dia">
-  <h2>Dia 5 – Feira Hippie de Ipanema (domingo)</h2>
-
-  <p>📍 Onde é? Praça General Osório, Ipanema.</p>
-  <p>[feirarteipanema.com] a Feira Hippie de Ipanema também acontece no domingo de Páscoa</p>
-
-  <p>Domingos, das 8h às 18h</p>
-
-  <p>Feira da Glória -- 8h00 às 16h00</p>
-</section>
-<section id="dia-6" class="dia">
-  <h2>Dia 6 – Prainha</h2>
-
-  <p>Uber ou carro → 20 a 30 min desde o Leblon (via Avenida Niemeyer / São Conrado / Barra / Recreio).<br>
-  Vale muito a pena pela paisagem da estrada.</p>
-
-  <h3>09h00 – Chegada à PRAINHA</h3>
-  <ul>
-    <li>Aproveitar a praia com calma</li>
-    <li>Fazer fotos no canto esquerdo (vista mais bonita)</li>
-    <li>Caminhar até as rochas para ver a enseada inteira</li>
-  </ul>
-
-  <h3>12h00 – Almoço no MIRANTE DA PRAINHA</h3>
-  <ul>
-    <li>Restaurante com vista para o mar:</li>
-    <li>Peixe grelhado</li>
-    <li>Pastéis</li>
-    <li>Camarão</li>
-    <li>Opções simples e saborosas<br>Preço médio: R$ 50–90/pessoa.</li>
-    <li>Alternativa: comer no Recreio (mais opções).</li>
-  </ul>
-
-  <h3>14h00 – Paragem no GRUMARI (5 min de carro)</h3>
-  <ul>
-    <li>Praia selvagem, extensa, linda — perfeita para fechar o dia antes de regressar.</li>
-  </ul>
-
-  <h3>Leblon → Prainha</h3>
-  <ul>
-    <li>A Prainha é mais afastada, protegida por parque natural — então fica mais caro.</li>
-    <li>UberX: R$ 60–90</li>
-    <li>Tempo: 30–40 minutos</li>
-  </ul>
-
-  <h3>Volta Prainha → Leblon</h3>
-  <ul>
-    <li>O valor costuma subir um pouco por causa da distância e do horário:</li>
-    <li>R$ 70–100</li>
-    <li>💡 Dica: Se for cedo (antes das 9h), o preço costuma cair.</li>
-  </ul>
-
-  <h3>PRAINHA → SIM, vale muito a pena considerar carro</h3>
-  <p>Porque:</p>
-  <ul>
-    <li>Fica em área de proteção ambiental → quase não há Ubers circulando</li>
-    <li>À tarde, às vezes não aparece Uber para voltar</li>
-    <li>Estrada é linda e segura</li>
-    <li>Pode combinar com Grumari (5 min), que é ainda mais complicada de voltar de Uber</li>
-    <li>Flexibilidade total</li>
-    <li>Para quem está com adolescentes e não quer stress → alugar carro é uma excelente ideia.</li>
-  </ul>
-
-  <h3>Mirante do Pedrão <mark>(está também no dia 10 / 11)</mark></h3>
-  <ul>
-    <li>ir de uber -- finais de semana samba gratuitos -- tem petiscos/ cerveja -- laranjeiras -- por do sol</li>
-  </ul>
-
-  <p>📍 Onde fica o Mirante do Pedrão?</p>
-  <ul>
-    <li>Ele fica em Laranjeiras, no alto da comunidade Santa Marta, na Rua Oswaldo Seabra.</li>
-  </ul>
-
-  <h3>🚗 Como chegar — Atenção: só é possível de carro ou moto</h3>
-  <p>A Riotur é explícita:</p>
-  <p><strong>"O acesso é feito de carro ou moto, apenas. Leva aproximadamente 6 minutos de carro saindo da Rua das Laranjeiras."</strong></p>
-  <p>👉 Ou seja: não existe acesso a pé desde baixo, nem transporte público direto, nem trilha segura aberta ao público.</p>
-
-  <p>Para você que está no Leblon, o mais simples é:</p>
-
-  <h3>⭐ 1) Uber (a melhor opção)</h3>
-  <p>Do Leblon → Mirante do Pedrão, o trajeto é muito fácil e rápido:</p>
-  <ul>
-    <li>⏱ Tempo</li>
-    <li>20–25 minutos (dependendo do trânsito pelo túnel Rebouças).</li>
-    <li>💸 Preço típico</li>
-    <li>R$ 18–35 (UberX)</li>
-    <li>Levemente mais caro no retorno se houver procura.</li>
-  </ul>
-
-  <p>✔ Por que Uber é o melhor para si?</p>
-  <ul>
-    <li>Evita pensar em estacionamento (lá em cima há espaço, mas é pequeno)</li>
-    <li>Condução tranquila sem entrar em vias estreitas da região</li>
-    <li>É o modo recomendado pela Riotur dada a localização no alto do morro</li>
-  </ul>
-
-  <h3>⭐ 2) Carro alugado (opção possível)</h3>
-  <p>Pode ir de carro alugado.<br>Mas <strong>não recomendo</strong> tanto quanto o Uber porque:</p>
-  <ul>
-    <li>Rua estreita e com curvas</li>
-    <li>Estacionamento limitado</li>
-    <li>Trânsito local com mototáxis e vans</li>
-    <li>Para quem não conhece a área, Uber é muito mais simples e seguro</li>
-  </ul>
-
-  <h3>⭐ 3) Rota recomendada desde o Leblon</h3>
-  <p>🟦 Leblon → Túnel Zuzu Angel</p>
-  <ul>
-    <li>Sair pela Lagoa ou São Conrado, entrar no Zuzu Angel → Rebouças.</li>
-  </ul>
-
-  <p>🟩 Túnel Rebouças → Laranjeiras</p>
-  <ul>
-    <li>Sair para o bairro Laranjeiras (R. das Laranjeiras).</li>
-  </ul>
-
-  <p>🟧 Laranjeiras → Mirante do Pedrão (parte final por rampa)</p>
-  <ul>
-    <li>Inserir no GPS: "Mirante do Pedrão -- Oswaldo Seabra, 357"</li>
-    <li>O carro Uber consegue ir até ao topo, onde o mirante foi revitalizado e tem food truck e eventos de samba conforme programação.</li>
-  </ul>
-
-  <h3>✨ O que esperar no Mirante do Pedrão</h3>
-  <p>Segundo a Riotur:</p>
-  <ul>
-    <li>Vista panorâmica para a Baía de Guanabara, Botafogo, Pão de Açúcar e Niterói</li>
-    <li>Continuando a trilha há vista para a Lagoa, Dois Irmãos, Pedra da Gávea e Cristo</li>
-    <li>Espaço revitalizado, com eventos e food truck</li>
-  </ul>
-
-  <h3>É seguro e adequado para adolescentes?</h3>
-  <p><strong>Sim, e por vários motivos:</strong></p>
-
-  <p><strong>✔ 1. Ambiente familiar</strong></p>
-  <ul>
-    <li>O Mirante foi revitalizado e hoje recebe muitas famílias, casais, turistas e jovens.</li>
-  </ul>
-
-  <p><strong>✔ 2. Vista maravilhosa → Pão de Açúcar, Baía de Guanabara, Botafogo</strong></p>
-  <ul>
-    <li>É um lugar aberto, amplo e visualmente muito bonito — perfeito para irem antes do samba e tirarem fotos.</li>
-  </ul>
-
-  <p><strong>✔ 3. Final da tarde é o melhor horário</strong></p>
-  <ul>
-    <li>A golden hour dali é lindíssima, e logo depois começam as rodas de samba.</li>
-  </ul>
-
-  <p><strong>✔ 4. Acesso apenas de carro ou moto</strong></p>
-  <ul>
-    <li>Isso é importante: a Riotur informa que o acesso é somente por carro ou moto, nada de ir a pé ou transporte público.</li>
-    <li>➡️ <strong>Portanto, vá de Uber</strong>, que é simples, direto e seguro.</li>
-  </ul>
-
-  <p><strong>✔ 5. Food truck no local</strong></p>
-  <ul>
-    <li>Ideal para adolescentes: snacks, bebidas, ambiente descontraído.</li>
-  </ul>
-
-  <h3>🌆 Resumo: vale a pena?</h3>
-  <ul>
-    <li>👉 Sim! Recomendo para um fim de tarde no fim de semana.<br>
-    O combo vista + música + ambiente carioca + food truck funciona muito bem para famílias com adolescentes.</li>
-  </ul>
-
-  <h3>📌 Dica importante</h3>
-  <p>A programação de samba varia — a Riotur aponta que ela é publicada no Instagram oficial do espaço: @mirantedopedraoficial</p>
-</section>
-<section id="dia-7" class="dia">
-  <h2>Dia 7 – Cristo Redentor + Lagoa</h2>
-
-  <p>Manhã: Cristo Redentor --- vale a pena comprar bilhetes antecipados para evitar filas. É uma das grandes atrações do Rio.</p>
-
-  <ul>
-    <li><strong>Mirante Dona Marta</strong> uma das melhores vistas do Rio</li>
-    <li><strong>Parque nacional da Tijuca</strong></li>
-    <li><strong>Vista Chinesa</strong></li>
-    <li><strong>Lagoa</strong></li>
-  </ul>
-  <h2>Dia 7 – Ilha Grande</h2>
-  <p>🌴Restaurante Palmas🌴</p>
-<p>(Restaurante - Bar - Suítes - Camping)  </p>
-<p></p>Venha se apaixonar por este paraíso único chamado Praia de Palmas e tenha momentos maravilhosos conosco com nossos serviços a beira-mar de Restaurante, Suítes e Camping!</p>
-<p>+55 21 99751-6420</p>
-<p>📍Praia de Palmas - Ilha Grande - Angra dos Reis</p>
-</section>
-
-<section id="dia-8" class="dia">
-  <h2>Dia 8 – Ilha Grande</h2>
-</section>
-
-<section id="dia-9" class="dia">
-  <h2>Dia 9 – Ilha Grande</h2>
-</section>
-  
-<section id="dia-10" class="dia">
-  <h2>Dia 10 – Ilha Grande</h2>
-</section>
-
-  <section id="dia-11" class="dia">
-  <h2>Dia 11 – Regresso a chorar</h2>
-</section>
+  <main>
+
+    <!-- ESSENCIAIS -->
+    <div class="dia" id="essenciais">
+      <div class="card-header">
+        <div class="day-badge">★</div>
+        <div class="dia-titulo">
+          <h2>Essenciais</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="essencial-grid">
+          <a href="https://maps.app.goo.gl/iiJTNKwCHeg2jLHY8?g_st=iw" target="_blank" class="essencial-item">
+            <span class="essencial-icon">🏠</span> Casa / Alojamento
+          </a>
+          <div class="essencial-item"><span class="essencial-icon">🚗</span> Uber / 99</div>
+          <div class="essencial-item"><span class="essencial-icon">🚇</span> MetroRio</div>
+          <div class="essencial-item"><span class="essencial-icon">🚲</span> Bike Itaú / Tembici</div>
+          <div class="essencial-item"><span class="essencial-icon">🚡</span> Bondinho 17h00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 29 -->
+    <div class="dia" id="dia-29">
+      <div class="card-header">
+        <div class="day-badge">29<br>Jun</div>
+        <div class="dia-titulo">
+          <h2>Chegada ao Rio</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">✈️ Manhã</p>
+          <ul>
+            <li>Transfer: Aeroporto Galeão às <strong>6h30</strong></li>
+            <li>Pequeno-almoço no <strong>Copacabana Palace</strong></li>
+            <li>Alternativa: <strong>Talho Capixaba</strong> — Leblon (abre às 7h00)</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🛒 Zona Sul – Leblon Posto 12</p>
+          <p><strong>Mercado Zona Sul</strong> — Av. Delfim Moreira, esquina com R. Rainha Guilhermina. A 1–2 min a pé do Posto 12.</p>
+          <ul>
+            <li>Bebidas geladas, snacks, frutas, protetor solar</li>
+            <li>Abre cedo, fecha tarde</li>
+          </ul>
+          <div class="destaque">
+            <strong>Outras opções próximas</strong>
+            Zona Sul — Rua Dias Ferreira (~8 min, mais completo)<br>
+            Hortifruti Natural da Terra — Ataulfo de Paiva (~10 min, ótimo para frutas e sumos)
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🏊 Skybars / Piscinas para marcar</p>
+          <ul>
+            <li>Sky Leme</li>
+            <li>Hilton Copacabana</li>
+            <li>Othon Palace</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 30 -->
+    <div class="dia" id="dia-30">
+      <div class="card-header">
+        <div class="day-badge">30<br>Jun</div>
+        <div class="dia-titulo">
+          <h2>Leblon → Arpoador → Ipanema</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌊 Manhã — Praia do Leblon (Posto 12)</p>
+          <p>Ótima para famílias, muito agradável de manhã cedo.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍽️ Almoço — Opções próximas</p>
+          <h3>BB Lanches <span class="tag tag-sun">Açaí</span></h3>
+          <p>Açaí excelente, pastéis, sanduíches. Ambiente super descontraído. (8–10 min)</p>
+          <h3>Big Polis <span class="tag tag-ocean">Económico</span></h3>
+          <p>Sucos + pratos baratos + vibe de praia. (10–12 min)</p>
+          <h3>Tapí Tapioca <span class="tag tag-palm">Familiar</span></h3>
+          <p>Tapiocas deliciosas e variadas. Excelente pós-praia. (~10–12 min)</p>
+          <h3>Beach Sucos</h3>
+          <p>Sucos + sanduíches económicos. (6–8 min)</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚲 Tarde — Calçadão até Ipanema</p>
+          <p>2,3 km — 30 minutos de bicicleta ou a pé. Uma das praias mais icónicas do Rio.</p>
+          <ul>
+            <li>🍨 Melhor açaí: <strong>Açaí do Moreno</strong> (Posto 9 e 10)</li>
+            <li>📸 Estátua de Tom Jobim na orla — foto obrigatória!</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌅 Fim de Tarde — Pôr-do-sol no Arpoador</p>
+          <p>Programa clássico e imperdível. Um dos melhores do mundo.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🛍️ Compras</p>
+          <p><strong>Loja gigante Havaianas</strong> — Ipanema · Seg–Sáb: 10h–20h</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍺 Jantar — Ipanema</p>
+          <h3>Bar Garota de Ipanema</h3>
+          <p>O bar onde nasceu a bossa nova. Mostrar a placa histórica!</p>
+          <h3>Choperia Torre do Barão</h3>
+          <p>Clássico carioca. Espetinhos, petiscos, bom para famílias. (10–12 min)</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 31 -->
+    <div class="dia" id="dia-31">
+      <div class="card-header">
+        <div class="day-badge">31<br>Jun</div>
+        <div class="dia-titulo">
+          <h2>Ciclovia Leblon → Praia Vermelha + Pão de Açúcar</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚲 Percurso (~25 km)</p>
+          <p>Ciclovia praticamente contínua: Leblon → Ipanema → Copacabana → Leme → Urca/Praia Vermelha.</p>
+          <div class="destaque">
+            <strong>Bike Itaú / Tembici</strong>
+            Criar contas nos 4 telemóveis com 4 cartões. Pegar numa estação e devolver na Urca.
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌅 17h00 — Teleférico Pão de Açúcar</p>
+          <p><a href="https://bondinho.com.br" target="_blank">bondinho.com.br</a> — bilhetes comprados para as <strong>17h00</strong>.</p>
+          <p>Chegar 20 minutos antes do embarque.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍽️ Jantar — Botafogo (Uber 5 min)</p>
+          <h3>Galeto STS</h3>
+          <p>Tradicional, barato, delicioso. Galeto, arroz, farofa, linguicinhas. ~R$ 40–55/pessoa.</p>
+          <h3>Galeto do Leblon ⭐</h3>
+          <p>📍 Rua Dias Ferreira, 154 — Leblon. Porções grandes, preço justo.</p>
+          <ul>
+            <li>Galeto com batatas · Picanha em porção · Arroz biro-biro · Farofa crocante</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚇 Regresso Botafogo → Leblon</p>
+          <p><strong>Metrô:</strong> Linha 1/4 sentido Ipanema/Leblon. Descer em Antero de Quental. ~R$ 6,90/pessoa.</p>
+          <p><strong>Uber:</strong> R$ 18–28, 10–20 minutos.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 1 -->
+    <div class="dia" id="dia-1">
+      <div class="card-header">
+        <div class="day-badge">1<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Orla Completa: Leblon → Leme</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🏰 Paragens</p>
+          <ul>
+            <li><strong>Forte de Copacabana</strong> (12 min ou 4 km)</li>
+            <li><strong>Confeitaria Colombo</strong> — às 10h ou como lanche (16h–18h)</li>
+            <li><strong>Jardim Botânico</strong> — grátis às terças-feiras</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍽️ Almoço — Mureta do Leme</p>
+          <p>Menu executivo R$ 55 · 2ª a 6ª · 11h–15h.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍦 Gelados</p>
+          <p><strong>Sorvete Kurtos Rio</strong> — ~R$ 10, próximo ao Copacabana Palace.</p>
+          <p>Melhor gelado: Rua Rodolfo Dantas.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍺 Final de Tarde</p>
+          <h3>JOBI</h3>
+          <p>Um dos botecos mais icónicos do Rio. Chope gelado + petiscos + clima carioca puro. Perto do Posto 12. Excelente para fim de tarde.</p>
+          <h3>Samba Sky — Rooftop Grátis</h3>
+          <h3>Vizta no Gran Mercure — Copacabana</h3>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 2 -->
+    <div class="dia" id="dia-2">
+      <div class="card-header">
+        <div class="day-badge">2<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Santa Teresa + Centro Histórico</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚃 Bonde de Santa Teresa</p>
+          <p>Embarque: Rua Lélio Gama, junto ao Metrô Carioca.</p>
+          <ul>
+            <li>Seg–Sex: 6h–23h · Sáb: 8h–23h · Dom: 8h–20h</li>
+            <li>Preço: <strong>R$ 20</strong> por pessoa (trajeto completo)</li>
+          </ul>
+          <div class="destaque">
+            <strong>Estratégia ideal</strong>
+            Ir direto até ao final (Largo das Neves) sem descer. Na volta, parar nos pontos de interesse. Evita pagar segunda passagem!
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">📍 Pontos do Roteiro</p>
+          <h3>Escadaria Selarón</h3>
+          <p>Um dos lugares mais fotografados do Rio. Entrada livre. Super animada ao fim de semana.</p>
+          <h3>Largo dos Guimarães</h3>
+          <p>Coração de Santa Teresa: arte, música, restaurantes.</p>
+          <ul>
+            <li>🍽️ <strong>Bar do Mineiro</strong> — a melhor feijoada do Rio</li>
+            <li>☕ Cafecito · Café do Alto (comida nordestina)</li>
+          </ul>
+          <h3>Parque das Ruínas</h3>
+          <p>Mirante 360º. Perfeito para fotos. <strong>Entrada grátis.</strong></p>
+          <h3>Mirante do Curvelo</h3>
+          <p>Vista para o Pão de Açúcar e Baía de Guanabara.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🏛️ Passeio pelo Centro</p>
+          <p>Theatro Municipal → Confeitaria Colombo → Real Gabinete Português de Leitura (grátis)</p>
+          <ul>
+            <li>Total a pé: ~25–30 minutos</li>
+            <li>Casa Cave — primeira confeitaria do Rio</li>
+            <li>Sahara — Mercado</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚇 Como Chegar (Leblon)</p>
+          <p><strong>Metrô:</strong> Antero de Quental → General Osório → Carioca. ~20 min · R$ 6,90</p>
+          <p><strong>Uber:</strong> R$ 25–40, 15–25 min.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 3 -->
+    <div class="dia" id="dia-3">
+      <div class="card-header">
+        <div class="day-badge">3<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Ciclovia Tim Maia → São Conrado → Joatinga</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚲 Percurso (~9 km, manhã cedo 7h–9h30)</p>
+          <p>Leblon → Mirantes do Leblon → Vidigal/Costão da Niemeyer → Praia do Pepino.</p>
+          <div class="destaque">
+            <strong>Tembici / Bike Rio</strong>
+            Pegar no Leblon (Av. Delfim Moreira / San Martin). Devolver na estação da Praia do Pepino.
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🪂 Praia do Pepino — São Conrado</p>
+          <ul>
+            <li>Ponto de pouso dos parapentes da Pedra Bonita</li>
+            <li>Mar calmo, cenário paradisíaco</li>
+            <li>Quiosques excelentes para almoço</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🏖️ Praias do Dia</p>
+          <h3>Praia da Joatinga</h3>
+          <p>Uma das mais bonitas e secretas do Rio. Água azul-turquesa, acesso por escadaria entre rochas, vibe jovem.</p>
+          <h3>Praia da Reserva (Tarde)</h3>
+          <p>Longa, tranquila, natureza preservada. Ideal para relaxar.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌳 Parque 2 Irmãos</p>
+          <p>4 miradouros com vista panorâmica da Zona Sul. 30–45 min suficientes.</p>
+          <ul>
+            <li><strong>Bar da Laje</strong> — junto ao Morro Dois Irmãos, obrigatório</li>
+            <li>Ir de Uber: "Parque Penhasco Dois Irmãos". Levar água, sem venda lá em cima.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 4 -->
+    <div class="dia" id="dia-4">
+      <div class="card-header">
+        <div class="day-badge">4<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Lapa + Feira do Lavradio</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚇 9h30 — Chegada à Lapa</p>
+          <p>Estação <strong>Carioca</strong> (Linha 1/2) → 10–12 min a pé da Rua do Lavradio.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🛍️ 10h00 — Feira do Lavradio</p>
+          <p>📍 Rua do Lavradio, Lapa · 1º sábado do mês</p>
+          <p>Artesanato carioca, antiguidades, música ao vivo, bares com mesas na rua.</p>
+          <div class="destaque">
+            <strong>Armazém do Senado</strong>
+            Roda de samba, sábado das 14h–18h30. Baile Charme na Rua do Resende.
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🎨 12h15 — Escadaria Selarón</p>
+          <p>10–12 min a pé da Lavradio. Azulejos coloridos do artista Jorge Selarón. Entrada livre.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🎶 13h30 — Almoço com Samba</p>
+          <h3>Bar do Adão</h3>
+          <p>Pastéis famosos + ambiente animado.</p>
+          <h3>Mangue Seco</h3>
+          <p>Local tradicional com forró e samba de raiz. Comida ótima.</p>
+          <h3>Nova Choperia (Lavradio)</h3>
+          <p>Tradicionalíssima, ótima com adolescentes.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🏛️ 15h–16h30 — Passeio Cultural</p>
+          <ul>
+            <li><strong>Theatro Municipal</strong> — fotos maravilhosas (10 min a pé)</li>
+            <li><strong>Catedral Metropolitana</strong> — entrada grátis, arquitectura fortíssima</li>
+            <li><strong>Aterro do Flamengo</strong> — Uber 5 min, vista para o Pão de Açúcar</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🥁 17h00 — Samba de Fim de Tarde</p>
+          <ul>
+            <li>Bares da Lavradio e Rua Riachuelo</li>
+            <li><strong>Pedra do Sal</strong> — 10 min de Uber, roda de samba mais tradicional do Rio</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍴 19h30 — Jantar</p>
+          <p><strong>Casa Momus</strong> — Italiano moderno · <strong>Bar do Adão</strong> — melhores pastéis · <strong>Boteco da Lapa</strong></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 5 -->
+    <div class="dia" id="dia-5">
+      <div class="card-header">
+        <div class="day-badge">5<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Feira Hippie de Ipanema (Domingo)</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="bloco">
+          <p class="bloco-titulo">📍 Praça General Osório, Ipanema</p>
+          <p>Domingos das <strong>8h às 18h</strong> · Também acontece no domingo de Páscoa.</p>
+          <p><a href="https://feirarteipanema.com" target="_blank">feirarteipanema.com</a></p>
+        </div>
+        <hr>
+        <div class="bloco">
+          <p class="bloco-titulo">🌸 Feira da Glória</p>
+          <p>8h00 às 16h00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 6 -->
+    <div class="dia" id="dia-6">
+      <div class="card-header">
+        <div class="day-badge">6<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Prainha + Grumari</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">🚗 Como Chegar</p>
+          <p>Uber ou carro alugado — 30–40 min desde o Leblon. A paisagem da estrada vale a pena!</p>
+          <div class="destaque">
+            <strong>⚠️ Atenção — Uber difícil no regresso</strong>
+            A Prainha fica em área de proteção ambiental. Poucos Ubers circulam. Considere carro alugado para flexibilidade total, especialmente com adolescentes.
+          </div>
+          <ul>
+            <li>UberX ida: R$ 60–90 · volta: R$ 70–100</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🏖️ 9h00 — Prainha</p>
+          <ul>
+            <li>Fotos no canto esquerdo (vista mais bonita)</li>
+            <li>Caminhar até as rochas para ver a enseada inteira</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🍽️ 12h00 — Mirante da Prainha</p>
+          <p>Peixe grelhado, pastéis, camarão. R$ 50–90/pessoa.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌿 14h00 — Grumari</p>
+          <p>Praia selvagem, extensa e linda. 5 min de carro da Prainha. Perfeita para fechar o dia.</p>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌆 Mirante do Pedrão <mark>também no Dia 10/11</mark></p>
+          <p>📍 Laranjeiras, Rua Oswaldo Seabra. Acesso <strong>apenas de carro ou moto</strong>.</p>
+          <ul>
+            <li>Uber recomendado: R$ 18–35 · ~20–25 min do Leblon</li>
+            <li>Vista: Baía de Guanabara, Botafogo, Pão de Açúcar, Niterói</li>
+            <li>Fim de semana: samba gratuito + petiscos + cerveja</li>
+            <li>Instagram: <strong>@mirantedopedraoficial</strong></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 7 -->
+    <div class="dia" id="dia-7">
+      <div class="card-header">
+        <div class="day-badge">7<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Cristo Redentor + Ilha Grande</h2>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="bloco">
+          <p class="bloco-titulo">✝️ Manhã — Cristo Redentor</p>
+          <p>Comprar bilhetes antecipados para evitar filas.</p>
+          <ul>
+            <li><strong>Mirante Dona Marta</strong> — uma das melhores vistas do Rio</li>
+            <li><strong>Parque Nacional da Tijuca</strong></li>
+            <li><strong>Vista Chinesa</strong></li>
+            <li><strong>Lagoa Rodrigo de Freitas</strong></li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="bloco">
+          <p class="bloco-titulo">🌴 Ilha Grande</p>
+          <div class="destaque">
+            <strong>🌴 Restaurante Palmas</strong>
+            Restaurante · Bar · Suítes · Camping<br>
+            📍 Praia de Palmas — Ilha Grande — Angra dos Reis<br>
+            📞 +55 21 99751-6420
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 8, 9, 10 -->
+    <div class="dia" id="dia-8">
+      <div class="card-header">
+        <div class="day-badge">8<br>Jul</div>
+        <div class="dia-titulo"><h2>Ilha Grande 🌴</h2></div>
+      </div>
+      <div class="card-body">
+        <p style="color: var(--muted); font-style: italic;">Conteúdo a completar...</p>
+      </div>
+    </div>
+
+    <div class="dia" id="dia-9">
+      <div class="card-header">
+        <div class="day-badge">9<br>Jul</div>
+        <div class="dia-titulo"><h2>Ilha Grande 🌴</h2></div>
+      </div>
+      <div class="card-body">
+        <p style="color: var(--muted); font-style: italic;">Conteúdo a completar...</p>
+      </div>
+    </div>
+
+    <div class="dia" id="dia-10">
+      <div class="card-header">
+        <div class="day-badge">10<br>Jul</div>
+        <div class="dia-titulo"><h2>Ilha Grande 🌴</h2></div>
+      </div>
+      <div class="card-body">
+        <p style="color: var(--muted); font-style: italic;">Conteúdo a completar...</p>
+      </div>
+    </div>
+
+    <!-- DIA 11 -->
+    <div class="dia" id="dia-11">
+      <div class="card-header">
+        <div class="day-badge">11<br>Jul</div>
+        <div class="dia-titulo">
+          <h2>Regresso a chorar 😢</h2>
+        </div>
+      </div>
+      <div class="card-body">
+        <p style="text-align:center; padding: 1.5rem 0; font-size:1.1rem;">Até à próxima, Rio 🇧🇷❤️</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    Rio de Janeiro · Junho–Julho 2025 · Férias de Sonho
+  </footer>
+
+  <script>
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('.dia');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+          // Scroll the active link into view in the nav
+          const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+          if (activeLink) {
+            activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
 </body>
 </html>
