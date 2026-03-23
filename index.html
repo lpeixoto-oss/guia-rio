@@ -8,226 +8,231 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --sun: #F5A623;
-      --ocean: #1A6B8A;
-      --sand: #F7EDD8;
-      --palm: #2D6A4F;
-      --terra: #C1440E;
-      --cream: #FDF8F0;
-      --ink: #1C1410;
-      --muted: #8A7A6A;
-      --border: rgba(28,20,16,0.1);
-    }
+:root {
+  --sun: #F5A623;
+  --ocean: #1A6B8A;
+  --sand: #F7EDD8;
+  --palm: #2D6A4F;
+  --terra: #C1440E;
+  --cream: #FDF8F0;
+  --ink: #1C1410;
+  --muted: #8A7A6A;
+  --border: rgba(28,20,16,0.1);
+}
 
-    html { height: 100%; }
+html { height: 100%; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.65;
-      height: 100%;
-    }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  height: 100%;
+}
 
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--ocean);
-      padding: 0.6rem 1rem;
-    }
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ocean);
+  padding: 0.6rem 1rem;
+}
 
-    .nav-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 0.4rem;
-    }
+.nav-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.4rem;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 0.35rem;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 2px;
-    }
-    .nav-links::-webkit-scrollbar { display: none; }
+.nav-links {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.nav-links::-webkit-scrollbar { display: none; }
 
-    .nav-links a {
-      flex: 0 0 auto;
-      white-space: nowrap;
-      font-size: 0.78rem;
-      font-weight: 500;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      border: 1.5px solid rgba(255,255,255,0.3);
-      text-decoration: none;
-      color: rgba(255,255,255,0.85);
-      transition: all 0.15s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: white;
-      color: var(--ocean);
-      border-color: white;
-    }
+.nav-links a {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  text-decoration: none;
+  color: rgba(255,255,255,0.85);
+  transition: all 0.15s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  background: white;
+  color: var(--ocean);
+  border-color: white;
+}
 
-    /* ── CONTENT ── */
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
+/* ── CONTENT ── */
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 
-    /* ── CARDS ── */
-    .dia {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
+/* ── CARDS ── */
+.dia {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
 
-    .card-header {
-      padding: 1.2rem 1.4rem 0.9rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-    }
+.card-header {
+  padding: 1.2rem 1.4rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
 
-    #essenciais .card-header { background: var(--ocean); }
-    #essenciais .card-header h2 { color: white; }
-    #essenciais .day-badge { background: rgba(255,255,255,0.2); color: white; }
+#essenciais .card-header { background: var(--ocean); }
+#essenciais .card-header h2 { color: white; }
+#essenciais .day-badge { background: rgba(255,255,255,0.2); color: white; }
 
-    .day-badge {
-      flex-shrink: 0;
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      background: var(--sand);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.2;
-    }
+.day-badge {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.2;
+}
 
-    .card-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.25;
-      padding-top: 0.2rem;
-    }
+.card-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  padding-top: 0.2rem;
+}
 
-    .card-body {
-      padding: 1.2rem 1.4rem 1.4rem;
-    }
+.card-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+}
 
-    .bloco { margin-bottom: 1.2rem; }
-    .bloco:last-child { margin-bottom: 0; }
+/* ── BLOCOS ── */
+.bloco { margin-bottom: 1.2rem; }
+.bloco:last-child { margin-bottom: 0; }
 
-    .bloco-titulo {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.66rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ocean);
-      margin-bottom: 0.45rem;
-    }
+.bloco-titulo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ocean);
+  margin-bottom: 0.45rem;
+}
 
-    h3 {
-      font-size: 0.93rem;
-      font-weight: 600;
-      margin: 0.9rem 0 0.3rem;
-    }
-    h3:first-child { margin-top: 0; }
+h3 {
+  font-size: 0.93rem;
+  font-weight: 600;
+  margin: 0.9rem 0 0.3rem;
+}
+h3:first-child { margin-top: 0; }
 
-    p { font-size: 0.88rem; color: #3a2e26; margin-bottom: 0.4rem; }
-    p:last-child { margin-bottom: 0; }
+p { font-size: 0.88rem; color: #3a2e26; margin-bottom: 0.4rem; }
+p:last-child { margin-bottom: 0; }
 
-    ul, ol { padding-left: 1.1rem; font-size: 0.88rem; color: #3a2e26; }
-    li { margin-bottom: 0.25rem; }
+ul, ol { padding-left: 1.1rem; font-size: 0.88rem; color: #3a2e26; }
+li { margin-bottom: 0.25rem; }
 
-    strong { color: var(--ink); font-weight: 600; }
-    a { color: var(--ocean); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+strong { color: var(--ink); font-weight: 600; }
+a { color: var(--ocean); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-    hr { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+hr { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
 
-    mark {
-      background: rgba(245,166,35,0.2);
-      color: var(--terra);
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
-      font-size: 0.85em;
-    }
+mark {
+  background: rgba(245,166,35,0.2);
+  color: var(--terra);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
 
-    .destaque {
-      background: var(--sand);
-      border-left: 3px solid var(--sun);
-      border-radius: 0 8px 8px 0;
-      padding: 0.7rem 0.9rem;
-      margin: 0.6rem 0;
-      font-size: 0.86rem;
-      color: #3a2e26;
-    }
-    .destaque strong {
-      display: block;
-      margin-bottom: 0.2rem;
-      color: var(--terra);
-    }
+/* ── DESTAQUE BOX ── */
+.destaque {
+  background: var(--sand);
+  border-left: 3px solid var(--sun);
+  border-radius: 0 8px 8px 0;
+  padding: 0.7rem 0.9rem;
+  margin: 0.6rem 0;
+  font-size: 0.86rem;
+  color: #3a2e26;
+}
+.destaque strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--terra);
+}
 
-    .tag {
-      display: inline-block;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 0.15em 0.5em;
-      border-radius: 999px;
-      margin-right: 0.25rem;
-    }
-    .tag-sun { background: rgba(245,166,35,0.15); color: #a0690a; }
-    .tag-ocean { background: rgba(26,107,138,0.12); color: var(--ocean); }
-    .tag-palm { background: rgba(45,106,79,0.12); color: var(--palm); }
+/* ── TAGS ── */
+.tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  margin-right: 0.25rem;
+}
+.tag-sun  { background: rgba(245,166,35,0.15); color: #a0690a; }
+.tag-ocean { background: rgba(26,107,138,0.12); color: var(--ocean); }
+.tag-palm  { background: rgba(45,106,79,0.12);  color: var(--palm); }
 
-    .essencial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 0.5rem;
-    }
-    .essencial-item {
-      padding: 0.6rem 0.75rem;
-      border-radius: 8px;
-      background: var(--sand);
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      text-decoration: none;
-    }
+/* ── ESSENCIAIS GRID ── */
+.essencial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.5rem;
+}
+.essencial-item {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: var(--sand);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+}
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem 3rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-    }
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
   </style>
 </head>
 <body>
@@ -252,615 +257,6 @@
       <a href="#dia-11">11 Jul</a>
     </div>
   </nav>
-
-  <div class="content">
-<!-- ESSENCIAIS -->
-    <div class="dia" id="essenciais">
-      <div class="card-header">
-        <div class="day-badge">★</div>
-        <div class="dia-titulo">
-          <h2>Essenciais</h2>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="essencial-grid">
-          <a href="https://maps.app.goo.gl/iiJTNKwCHeg2jLHY8?g_st=iw" target="_blank" class="essencial-item">
-            <span class="essencial-icon">🏠</span> Casa / Alojamento
-          </a>
-          <div class="essencial-item"><span class="essencial-icon">🚗</span> Uber / 99</div>
-          <div class="essencial-item"><span class="essencial-icon">🚇</span> MetroRio</div>
-          <div class="essencial-item"><span class="essencial-icon">🚲</span> Bike Itaú / Tembici</div>
-          <div class="essencial-item"><span class="essencial-icon">🚡</span> Bondinho 17h00</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DIA 29 -->
-    <div class="dia" id="dia-29">
-      <div class="card-header">
-        <div class="day-badge">29<br>Jun</div>
-        <div class="dia-titulo">
-          <h2>Chegada ao Rio</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">✈️ Manhã</p>
-          <ul>
-            <li>Transfer: Aeroporto Galeão às <strong>6h30</strong></li>
-            <li>Pequeno-almoço no <strong>Copacabana Palace</strong></li>
-            <li>Alternativa: <strong>Talho Capixaba</strong> — Leblon (abre às 7h00)</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🛒 Zona Sul – Leblon Posto 12</p>
-          <p><strong>Mercado Zona Sul</strong> — Av. Delfim Moreira, esquina com R. Rainha Guilhermina. A 1–2 min a pé do Posto 12.</p>
-          <ul>
-            <li>Bebidas geladas, snacks, frutas, protetor solar</li>
-            <li>Abre cedo, fecha tarde</li>
-          </ul>
-          <div class="destaque">
-            <strong>Outras opções próximas</strong>
-            Zona Sul — Rua Dias Ferreira (~8 min, mais completo)<br>
-            Hortifruti Natural da Terra — Ataulfo de Paiva (~10 min, ótimo para frutas e sumos)
-          </div>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏊 Skybars / Piscinas para marcar</p>
-          <ul>
-            <li>Sky Leme</li>
-            <li>Hilton Copacabana</li>
-            <li>Othon Palace</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 30 -->
-    <div class="dia" id="dia-30">
-      <div class="card-header">
-        <div class="day-badge">30<br>Jun</div>
-        <div class="dia-titulo">
-          <h2>Leblon → Arpoador → Ipanema</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌊 Manhã — Praia do Leblon (Posto 12)</p>
-          <p>Ótima para famílias, muito agradável de manhã cedo.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍽️ Almoço — Opções próximas</p>
-          <h3>BB Lanches <span class="tag tag-sun">Açaí</span></h3>
-          <p>Açaí excelente, pastéis, sanduíches. Ambiente super descontraído. (8–10 min)</p>
-          <h3>Big Polis <span class="tag tag-ocean">Económico</span></h3>
-          <p>Sucos + pratos baratos + vibe de praia. (10–12 min)</p>
-          <h3>Tapí Tapioca <span class="tag tag-palm">Familiar</span></h3>
-          <p>Tapiocas deliciosas e variadas. Excelente pós-praia. (~10–12 min)</p>
-          <h3>Beach Sucos</h3>
-          <p>Sucos + sanduíches económicos. (6–8 min)</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚲 Tarde — Calçadão até Ipanema</p>
-          <p>2,3 km — 30 minutos de bicicleta ou a pé. Uma das praias mais icónicas do Rio.</p>
-          <ul>
-            <li>🍨 Melhor açaí: <strong>Açaí do Moreno</strong> (Posto 9 e 10)</li>
-            <li>📸 Estátua de Tom Jobim na orla — foto obrigatória!</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌅 Fim de Tarde — Pôr-do-sol no Arpoador</p>
-          <p>Programa clássico e imperdível. Um dos melhores do mundo.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🛍️ Compras</p>
-          <p><strong>Loja gigante Havaianas</strong> — Ipanema · Seg–Sáb: 10h–20h</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍺 Jantar — Ipanema</p>
-          <h3>Bar Garota de Ipanema</h3>
-          <p>O bar onde nasceu a bossa nova. Mostrar a placa histórica!</p>
-          <h3>Choperia Torre do Barão</h3>
-          <p>Clássico carioca. Espetinhos, petiscos, bom para famílias. (10–12 min)</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 31 -->
-    <div class="dia" id="dia-31">
-      <div class="card-header">
-        <div class="day-badge">31<br>Jun</div>
-        <div class="dia-titulo">
-          <h2>Ciclovia Leblon → Praia Vermelha + Pão de Açúcar</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚲 Percurso (~25 km)</p>
-          <p>Ciclovia praticamente contínua: Leblon → Ipanema → Copacabana → Leme → Urca/Praia Vermelha.</p>
-          <div class="destaque">
-            <strong>Bike Itaú / Tembici</strong>
-            Criar contas nos 4 telemóveis com 4 cartões. Pegar numa estação e devolver na Urca.
-          </div>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌅 17h00 — Teleférico Pão de Açúcar</p>
-          <p><a href="https://bondinho.com.br" target="_blank">bondinho.com.br</a> — bilhetes comprados para as <strong>17h00</strong>.</p>
-          <p>Chegar 20 minutos antes do embarque.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍽️ Jantar — Botafogo (Uber 5 min)</p>
-          <h3>Galeto STS</h3>
-          <p>Tradicional, barato, delicioso. Galeto, arroz, farofa, linguicinhas. ~R$ 40–55/pessoa.</p>
-          <h3>Galeto do Leblon ⭐</h3>
-          <p>📍 Rua Dias Ferreira, 154 — Leblon. Porções grandes, preço justo.</p>
-          <ul>
-            <li>Galeto com batatas · Picanha em porção · Arroz biro-biro · Farofa crocante</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚇 Regresso Botafogo → Leblon</p>
-          <p><strong>Metrô:</strong> Linha 1/4 sentido Ipanema/Leblon. Descer em Antero de Quental. ~R$ 6,90/pessoa.</p>
-          <p><strong>Uber:</strong> R$ 18–28, 10–20 minutos.</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 1 -->
-    <div class="dia" id="dia-1">
-      <div class="card-header">
-        <div class="day-badge">1<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Orla Completa: Leblon → Leme</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏰 Paragens</p>
-          <ul>
-            <li><strong>Forte de Copacabana</strong> (12 min ou 4 km)</li>
-            <li><strong>Confeitaria Colombo</strong> — às 10h ou como lanche (16h–18h)</li>
-            <li><strong>Jardim Botânico</strong> — grátis às terças-feiras</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍽️ Almoço — Mureta do Leme</p>
-          <p>Menu executivo R$ 55 · 2ª a 6ª · 11h–15h.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍦 Gelados</p>
-          <p><strong>Sorvete Kurtos Rio</strong> — ~R$ 10, próximo ao Copacabana Palace.</p>
-          <p>Melhor gelado: Rua Rodolfo Dantas.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍺 Final de Tarde</p>
-          <h3>JOBI</h3>
-          <p>Um dos botecos mais icónicos do Rio. Chope gelado + petiscos + clima carioca puro. Perto do Posto 12. Excelente para fim de tarde.</p>
-          <h3>Samba Sky — Rooftop Grátis</h3>
-          <h3>Vizta no Gran Mercure — Copacabana</h3>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 2 -->
-    <div class="dia" id="dia-2">
-      <div class="card-header">
-        <div class="day-badge">2<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Santa Teresa + Centro Histórico</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚃 Bonde de Santa Teresa</p>
-          <p>Embarque: Rua Lélio Gama, junto ao Metrô Carioca.</p>
-          <ul>
-            <li>Seg–Sex: 6h–23h · Sáb: 8h–23h · Dom: 8h–20h</li>
-            <li>Preço: <strong>R$ 20</strong> por pessoa (trajeto completo)</li>
-          </ul>
-          <div class="destaque">
-            <strong>Estratégia ideal</strong>
-            Ir direto até ao final (Largo das Neves) sem descer. Na volta, parar nos pontos de interesse. Evita pagar segunda passagem!
-          </div>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">📍 Pontos do Roteiro</p>
-          <h3>Escadaria Selarón</h3>
-          <p>Um dos lugares mais fotografados do Rio. Entrada livre. Super animada ao fim de semana.</p>
-          <h3>Largo dos Guimarães</h3>
-          <p>Coração de Santa Teresa: arte, música, restaurantes.</p>
-          <ul>
-            <li>🍽️ <strong>Bar do Mineiro</strong> — a melhor feijoada do Rio</li>
-            <li>☕ Cafecito · Café do Alto (comida nordestina)</li>
-          </ul>
-          <h3>Parque das Ruínas</h3>
-          <p>Mirante 360º. Perfeito para fotos. <strong>Entrada grátis.</strong></p>
-          <h3>Mirante do Curvelo</h3>
-          <p>Vista para o Pão de Açúcar e Baía de Guanabara.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏛️ Passeio pelo Centro</p>
-          <p>Theatro Municipal → Confeitaria Colombo → Real Gabinete Português de Leitura (grátis)</p>
-          <ul>
-            <li>Total a pé: ~25–30 minutos</li>
-            <li>Casa Cave — primeira confeitaria do Rio</li>
-            <li>Sahara — Mercado</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚇 Como Chegar (Leblon)</p>
-          <p><strong>Metrô:</strong> Antero de Quental → General Osório → Carioca. ~20 min · R$ 6,90</p>
-          <p><strong>Uber:</strong> R$ 25–40, 15–25 min.</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 3 -->
-    <div class="dia" id="dia-3">
-      <div class="card-header">
-        <div class="day-badge">3<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Ciclovia Tim Maia → São Conrado → Joatinga</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚲 Percurso (~9 km, manhã cedo 7h–9h30)</p>
-          <p>Leblon → Mirantes do Leblon → Vidigal/Costão da Niemeyer → Praia do Pepino.</p>
-          <div class="destaque">
-            <strong>Tembici / Bike Rio</strong>
-            Pegar no Leblon (Av. Delfim Moreira / San Martin). Devolver na estação da Praia do Pepino.
-          </div>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🪂 Praia do Pepino — São Conrado</p>
-          <ul>
-            <li>Ponto de pouso dos parapentes da Pedra Bonita</li>
-            <li>Mar calmo, cenário paradisíaco</li>
-            <li>Quiosques excelentes para almoço</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏖️ Praias do Dia</p>
-          <h3>Praia da Joatinga</h3>
-          <p>Uma das mais bonitas e secretas do Rio. Água azul-turquesa, acesso por escadaria entre rochas, vibe jovem.</p>
-          <h3>Praia da Reserva (Tarde)</h3>
-          <p>Longa, tranquila, natureza preservada. Ideal para relaxar.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌳 Parque 2 Irmãos</p>
-          <p>4 miradouros com vista panorâmica da Zona Sul. 30–45 min suficientes.</p>
-          <ul>
-            <li><strong>Bar da Laje</strong> — junto ao Morro Dois Irmãos, obrigatório</li>
-            <li>Ir de Uber: "Parque Penhasco Dois Irmãos". Levar água, sem venda lá em cima.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 4 -->
-    <div class="dia" id="dia-4">
-      <div class="card-header">
-        <div class="day-badge">4<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Lapa + Feira do Lavradio</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚇 9h30 — Chegada à Lapa</p>
-          <p>Estação <strong>Carioca</strong> (Linha 1/2) → 10–12 min a pé da Rua do Lavradio.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🛍️ 10h00 — Feira do Lavradio</p>
-          <p>📍 Rua do Lavradio, Lapa · 1º sábado do mês</p>
-          <p>Artesanato carioca, antiguidades, música ao vivo, bares com mesas na rua.</p>
-          <div class="destaque">
-            <strong>Armazém do Senado</strong>
-            Roda de samba, sábado das 14h–18h30. Baile Charme na Rua do Resende.
-          </div>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🎨 12h15 — Escadaria Selarón</p>
-          <p>10–12 min a pé da Lavradio. Azulejos coloridos do artista Jorge Selarón. Entrada livre.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🎶 13h30 — Almoço com Samba</p>
-          <h3>Bar do Adão</h3>
-          <p>Pastéis famosos + ambiente animado.</p>
-          <h3>Mangue Seco</h3>
-          <p>Local tradicional com forró e samba de raiz. Comida ótima.</p>
-          <h3>Nova Choperia (Lavradio)</h3>
-          <p>Tradicionalíssima, ótima com adolescentes.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏛️ 15h–16h30 — Passeio Cultural</p>
-          <ul>
-            <li><strong>Theatro Municipal</strong> — fotos maravilhosas (10 min a pé)</li>
-            <li><strong>Catedral Metropolitana</strong> — entrada grátis, arquitectura fortíssima</li>
-            <li><strong>Aterro do Flamengo</strong> — Uber 5 min, vista para o Pão de Açúcar</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🥁 17h00 — Samba de Fim de Tarde</p>
-          <ul>
-            <li>Bares da Lavradio e Rua Riachuelo</li>
-            <li><strong>Pedra do Sal</strong> — 10 min de Uber, roda de samba mais tradicional do Rio</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍴 19h30 — Jantar</p>
-          <p><strong>Casa Momus</strong> — Italiano moderno · <strong>Bar do Adão</strong> — melhores pastéis · <strong>Boteco da Lapa</strong></p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 5 -->
-    <div class="dia" id="dia-5">
-      <div class="card-header">
-        <div class="day-badge">5<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Feira Hippie de Ipanema (Domingo)</h2>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="bloco">
-          <p class="bloco-titulo">📍 Praça General Osório, Ipanema</p>
-          <p>Domingos das <strong>8h às 18h</strong> · Também acontece no domingo de Páscoa.</p>
-          <p><a href="https://feirarteipanema.com" target="_blank">feirarteipanema.com</a></p>
-        </div>
-        <hr>
-        <div class="bloco">
-          <p class="bloco-titulo">🌸 Feira da Glória</p>
-          <p>8h00 às 16h00</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- DIA 6 -->
-    <div class="dia" id="dia-6">
-      <div class="card-header">
-        <div class="day-badge">6<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Prainha + Grumari</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🚗 Como Chegar</p>
-          <p>Uber ou carro alugado — 30–40 min desde o Leblon. A paisagem da estrada vale a pena!</p>
-          <div class="destaque">
-            <strong>⚠️ Atenção — Uber difícil no regresso</strong>
-            A Prainha fica em área de proteção ambiental. Poucos Ubers circulam. Considere carro alugado para flexibilidade total, especialmente com adolescentes.
-          </div>
-          <ul>
-            <li>UberX ida: R$ 60–90 · volta: R$ 70–100</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏖️ 9h00 — Prainha</p>
-          <ul>
-            <li>Fotos no canto esquerdo (vista mais bonita)</li>
-            <li>Caminhar até as rochas para ver a enseada inteira</li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🍽️ 12h00 — Mirante da Prainha</p>
-          <p>Peixe grelhado, pastéis, camarão. R$ 50–90/pessoa.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌿 14h00 — Grumari</p>
-          <p>Praia selvagem, extensa e linda. 5 min de carro da Prainha. Perfeita para fechar o dia.</p>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌆 Mirante do Pedrão <mark>também no Dia 10/11</mark></p>
-          <p>📍 Laranjeiras, Rua Oswaldo Seabra. Acesso <strong>apenas de carro ou moto</strong>.</p>
-          <ul>
-            <li>Uber recomendado: R$ 18–35 · ~20–25 min do Leblon</li>
-            <li>Vista: Baía de Guanabara, Botafogo, Pão de Açúcar, Niterói</li>
-            <li>Fim de semana: samba gratuito + petiscos + cerveja</li>
-            <li>Instagram: <strong>@mirantedopedraoficial</strong></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 7 -->
-    <div class="dia" id="dia-7">
-      <div class="card-header">
-        <div class="day-badge">7<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Cristo Redentor + Ilha Grande</h2>
-        </div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">✝️ Manhã — Cristo Redentor</p>
-          <p>Comprar bilhetes antecipados para evitar filas.</p>
-          <ul>
-            <li><strong>Mirante Dona Marta</strong> — uma das melhores vistas do Rio</li>
-            <li><strong>Parque Nacional da Tijuca</strong></li>
-            <li><strong>Vista Chinesa</strong></li>
-            <li><strong>Lagoa Rodrigo de Freitas</strong></li>
-          </ul>
-        </div>
-
-        <hr>
-
-        <div class="bloco">
-          <p class="bloco-titulo">🌴 Ilha Grande</p>
-          <div class="destaque">
-            <strong>🌴 Restaurante Palmas</strong>
-            Restaurante · Bar · Suítes · Camping<br>
-            📍 Praia de Palmas — Ilha Grande — Angra dos Reis<br>
-            📞 +55 21 99751-6420
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 8, 9, 10 -->
-    <div class="dia" id="dia-8">
-      <div class="card-header">
-        <div class="day-badge">8<br>Jul</div>
-        <div class="dia-titulo"><h2>Ilha Grande 🌴</h2></div>
-      </div>
-      <div class="card-body">
-        <p style="color: var(--muted); font-style: italic;">Conteúdo a completar...</p>
-      </div>
-    </div>
-
-    <div class="dia" id="dia-9">
-      <div class="card-header">
-        <div class="day-badge">9<br>Jul</div>
-        <div class="dia-titulo"><h2>Ilha Grande 🌴</h2></div>
-      </div>
-      <div class="card-body">
-        <p style="color: var(--muted); font-style: italic;">Conteúdo a completar...</p>
-      </div>
-    </div>
-
-    <div class="dia" id="dia-10">
-      <div class="card-header">
-        <div class="day-badge">10<br>Jul</div>
-        <div class="dia-titulo"><h2>Ilha Grande → Rio 🌴</h2></div>
-      </div>
-      <div class="card-body">
-
-        <div class="bloco">
-          <p class="bloco-titulo">🏨 Alojamento — Check-in</p>
-          <div class="destaque">
-            <strong>JO&amp;JOE Rio — Largo do Boticário</strong>
-            📍 <a href="https://www.google.com/maps/search/?api=1&query=Largo+do+Boticario+32+Cosme+Velho+Rio+de+Janeiro" target="_blank">Largo do Boticário, 32 — Cosme Velho</a><br>
-            📞 +55 21 3235 2600<br>
-            🛎️ Check-in: <strong>Sexta-feira a partir das 15h00</strong><br>
-            🚪 Check-out: Sábado até às 12h00<br>
-            👨‍👩‍👧‍👦 2 adultos + 2 crianças (12 e 15 anos) · 1 noite<br>
-            💶 ~€77 · R$ 462
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIA 11 -->
-    <div class="dia" id="dia-11">
-      <div class="card-header">
-        <div class="day-badge">11<br>Jul</div>
-        <div class="dia-titulo">
-          <h2>Regresso a chorar 😢</h2>
-        </div>
-      </div>
-      <div class="card-body">
-        <p style="text-align:center; padding: 1.5rem 0; font-size:1.1rem;">Até à próxima, Rio 🇧🇷❤️</p>
-      </div>
-    </div>
-  </div>
 
   <footer>Rio de Janeiro · Junho–Julho 2025 · Férias de Sonho</footer>
 
